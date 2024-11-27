@@ -34,44 +34,125 @@
 // calcAge(1997);
 
 //Variables
-console.log(me);
-// console.log(job);
-// console.log(year);
+// console.log(me);
+// // console.log(job);
+// // console.log(year);
 
-var me = 'Ali';
-let job = 'student';
-const year = 1997;
+// var me = 'Ali';
+// let job = 'student';
+// const year = 1997;
 
-//Functions
-console.log(addDecl(2, 3));
-// console.log(addExpr(2, 3));
-console.log(addArrow);
-// console.log(addArrow(2, 3));
-function addDecl(a, b) {
-  return a + b;
-}
+// //Functions
+// console.log(addDecl(2, 3));
+// // console.log(addExpr(2, 3));
+// console.log(addArrow);
+// // console.log(addArrow(2, 3));
+// function addDecl(a, b) {
+//   return a + b;
+// }
 
+// const addExpr = function (a, b) {
+//   return a + b;
+// };
+
+// var addArrow = (a, b) => a + b;
+
+// //Example
+// console.log(numProducts);
+
+// if (!numProducts) deleteShoppingCart();
+
+// var numProducts = 10;
+
+// function deleteShoppingCart() {
+//   console.log('All products deleted!');
+// }
+
+// var x = 1;
+// let y = 2;
+// const z = 3;
+
+// console.log(x === window.x);
+// console.log(y === window.y);
+// console.log(z === window.z);
+// console.log(this);
+
+// const calcAge = function (birthYear) {
+//   console.log(2024 - birthYear);
+//   // console.log(this);
+// };
+// calcAge(1997);
+
+// const calcAgeArrow = birthYear => {
+//   console.log(2024 - birthYear);
+//   // console.log(this);
+// };
+// calcAgeArrow(1976);
+
+// const ali = {
+//   year: 1997,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+// };
+// ali.calcAge();
+
+// const matilda = {
+//   year: 2017,
+// };
+
+// matilda.calcAge = ali.calcAge;
+// matilda.calcAge();
+
+// const f = ali.calcAge;
+// f();
+
+// Regular Functions visualViewport. Arrow Functions
+// var firstName = 'Matilda';
+const ali = {
+  firstName: 'Ali',
+  year: 1997,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+
+    //Solution 1
+    // const self = this; //self ot that
+    // const isMillenial = function () {
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   // console.log(this.year >= 1981 && this.year <= 1996);
+    // };
+
+    //Solution 2
+    const self = this; //self ot that
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+      // console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+ali.greet();
+ali.calcAge();
+
+//Arguments keyword
 const addExpr = function (a, b) {
+  console.log(arguments);
   return a + b;
 };
+addExpr(2, 5);
+addExpr(2, 5, 12, 8);
 
-var addArrow = (a, b) => a + b;
-
-//Example
-console.log(numProducts);
-
-if (!numProducts) deleteShoppingCart();
-
-var numProducts = 10;
-
-function deleteShoppingCart() {
-  console.log('All products deleted!');
-}
-
-var x = 1;
-let y = 2;
-const z = 3;
-
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8);
