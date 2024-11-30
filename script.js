@@ -108,51 +108,106 @@
 // const f = ali.calcAge;
 // f();
 
-// Regular Functions visualViewport. Arrow Functions
+// Regular Functions vs. Arrow Functions
 // var firstName = 'Matilda';
-const ali = {
-  firstName: 'Ali',
-  year: 1997,
-  calcAge: function () {
-    // console.log(this);
-    console.log(2037 - this.year);
+// const ali = {
+//   firstName: 'Ali',
+//   year: 1997,
+//   calcAge: function () {
+//     // console.log(this);
+//     console.log(2037 - this.year);
 
-    //Solution 1
-    // const self = this; //self ot that
-    // const isMillenial = function () {
-    //   console.log(self);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    //   // console.log(this.year >= 1981 && this.year <= 1996);
-    // };
+//Solution 1
+// const self = this; //self ot that
+// const isMillenial = function () {
+//   console.log(self);
+//   console.log(self.year >= 1981 && self.year <= 1996);
+//   // console.log(this.year >= 1981 && this.year <= 1996);
+// };
 
-    //Solution 2
-    const self = this; //self ot that
-    const isMillenial = () => {
-      console.log(this);
-      console.log(this.year >= 1981 && this.year <= 1996);
-      // console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    isMillenial();
-  },
+//Solution 2
+//     const self = this; //self ot that
+//     const isMillenial = () => {
+//       console.log(this);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//       // console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isMillenial();
+//   },
 
-  greet: () => {
-    console.log(this);
-    console.log(`Hey ${this.firstName}`);
-  },
+//   greet: () => {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   },
+// };
+// ali.greet();
+// ali.calcAge();
+
+// //Arguments keyword
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addExpr(2, 5);
+// addExpr(2, 5, 12, 8);
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 8);
+
+//Primitives  vs. Objects
+
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+// console.log(age);
+// console.log(oldAge);
+
+// const me = {
+//   name: 'Ali',
+//   age: 27,
+// };
+
+// const friend = me;
+// friend.age = 28;
+// console.log('Friend:', friend);
+// console.log('Me:', me);
+
+// Primitives vs Objects in Practice
+
+//Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+//Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
 };
-ali.greet();
-ali.calcAge();
 
-//Arguments keyword
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
-addExpr(2, 5);
-addExpr(2, 5, 12, 8);
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', marriedJessica);
 
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
+//Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
 };
-addArrow(2, 5, 8);
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage: ', jessicaCopy);
